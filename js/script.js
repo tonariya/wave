@@ -33,14 +33,11 @@ $("#abt").on("click", function(){
 	tabopen = !tabopen;
 });
 
-var ready = false;
-
-while(false){
-	location.reload();
-}
+var loadScreen = $("#loadScreen");
 
 $(document).ready( function(){
-	ready = true;
+	imgResize();
+	loadScreen.hide();
 });
 
 
@@ -166,21 +163,24 @@ moveIt();
 
 
 //img Block Resize
-var scaleFactor = 1.4; //face blocks must be adjustes acoordingly for every different value
-$.each($(".container .face .block img"), function(){
-	var originalSize = this.clientWidth;
-	var obj = $(this);
+function imgResize(){
+	var scaleFactor = 1.4; //face blocks must be adjustes acoordingly for every different value
+	$.each($(".container2 .backg img"), function(){
+		var originalSize = this.clientWidth;
+		var obj = $(this);
+		
+		if(obj.attr("id") == "sky"){
+			obj.height(this.clientHeight*scaleFactor);
+		} else{
+			obj.width(originalSize*scaleFactor);
+		}
+	});
 	
-	obj.css("width", originalSize*scaleFactor);
-});
-
-$.each($(".container2 .backg img"), function(){
-	var originalSize = this.clientWidth;
-	var obj = $(this);
-
-	if(obj.attr("id") == "sky"){
-		obj.height(this.clientHeight*scaleFactor);
-	} else{
-		obj.width(originalSize*scaleFactor);
-	}
-});
+	$.each($(".container .face .block img"), function(){
+		var originalSize = this.clientWidth;
+		var obj = $(this);
+		
+		obj.css("width", originalSize*scaleFactor);
+			
+	});
+}

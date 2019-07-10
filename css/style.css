@@ -21,6 +21,19 @@ body,html {
 	perspective: 1000px;
 	display: inline-block;
 }
+
+div#loadScreen{
+	z-index: 9001;
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	min-width: 100%;
+	min-height: 100%;
+	background-color: hotpink;
+	top: 0;
+	left: 0;
+}
+
 div#playZone div{
 	z-index: 2000;
 }
