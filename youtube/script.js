@@ -63,10 +63,6 @@ var replay = 0;
 
 //complete track name (displayed on the user interface - composed of trackN and trackName)
 var trackTitle = [];
-
-$(document).ready( function(){
-});
-
 function onYouTubeIframeAPIReady() {
     player = new YT.Player('video-placeholder', {
         width: 600,

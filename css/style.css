@@ -263,7 +263,7 @@ div#about-txt{
 	top: 0;
 	right: 2vw;
 	min-width: 120px;
-	max-width: 220px;
+	max-width: 240px;
 	height: auto;
 	min-height: 80px;
 	position: absolute;
@@ -298,6 +298,7 @@ div#about-txt h4{
 }
 span{
 	color:rgba(255, 79, 98, 0.8);
+	font-weight: 800;
 }
 span#email{
 	color: rgb(255, 79, 98);
@@ -333,16 +334,6 @@ div.song-name h2{
 	-webkit-filter: brightness(2.80);
 	-webkit-filter: saturate(4);
 	-webkit-filter: drop-shadow(0 0 0.3rem rgb(252, 237, 196));
-}
-
-/*All fonts below are available at 
-------------------------------------
-pentacom.jp/pentacom/bitfontmaker2/gallery
------------------------------------*/
-@font-face{
-	font-family: ner;
-	src: url('font/Nerhoe.ttf');
-	font-size: 32px;
 }
 
 @font-face{

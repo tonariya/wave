@@ -31,8 +31,12 @@ $("#abt").on("click", function(){
 		this.toggleClass("window");
 	};
 	tabopen = !tabopen;
-	console.log(tabopen);
 });
+$(document).hide();
+$(document).ready( function(){
+	$(document).show();
+});
+
 
 function moveIt(){
 	x += (followx - x) * friction;
@@ -170,10 +174,7 @@ $.each($(".container2 .backg img"), function(){
 
 	if(obj.attr("id") == "sky"){
 		obj.height(this.clientHeight*scaleFactor);
-		console.log("blah");
 	} else{
 		obj.width(originalSize*scaleFactor);
 	}
-
-	console.log("resized from "+originalSize+"px to "+this.clientWidth+"px");
 });
