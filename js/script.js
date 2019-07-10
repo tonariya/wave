@@ -32,9 +32,15 @@ $("#abt").on("click", function(){
 	};
 	tabopen = !tabopen;
 });
-$(document).hide();
+
+var ready = false;
+
+while(false){
+	location.reload();
+}
+
 $(document).ready( function(){
-	$(document).show();
+	ready = true;
 });
 
 
