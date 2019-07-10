@@ -1,0 +1,220 @@
+<!DOCTYPE HTML>
+<html>
+	
+	<head>
+	<meta charset="UTF-8">
+		<title>This is a funky prototype</title>
+		<!--<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0,target-densitydpi=device-dpi, user-scalable=no" />-->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="css/style.css">
+		<link rel="stylesheet" href="css/viewport.css">
+		<link rel="stylesheet" href="youtube/style.css">
+		<!--Roboto Font import-->
+		<link href="https://fonts.googleapis.com/css?family=Roboto:400i,500&display=swap" rel="stylesheet">
+		<!--jQuery import-->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	</head>
+
+	
+	<body>
+		
+		<div id="viewport">
+			<div>
+				<h2>Yawza!</h2>
+				<h6>This page was made to be experienced in wider screens and with the use of a mouse. But don't worry, you can still experience <span>some</span> of it!</h6>
+			</div>
+		
+		</div>
+		
+		<div id="playZone">
+		
+			<!-- 1. The <iframe> (and video player) will replace this <div> tag. -->
+		<div id="video-placeholder" class=" hide"></div>
+		
+		<!--tracks-->
+		<div class="track-list-container hide">
+			<div id="drag" class="track-list hide"></div>
+		</div>
+
+		<!--controls-->
+		<div class="control-wrap hide">
+		
+			<div id="prev"><img src="youtube/assets/back.png"></div>
+			<div id="play"><img src="youtube/assets/play.png"></div>
+			<div id="pause"><img src="youtube/assets/pause.png"></div>
+			<div id="stop"><img src="youtube/assets/stop.png"></div>
+			<div id="next"><img src="youtube/assets/next.png"></div>
+			
+			<div class="shuffle"><img src="youtube/assets/shuffle.png"></div>
+			<div class="replay"><img src="youtube/assets/replay.png"></div>
+
+			<!--progress bar-->
+			<div class="progress-bar hide">
+				<input type="range" id="progress-bar" value="0">
+			</div>
+		</div>
+		
+		<!--volume bar-->
+		<div id="volume-bar-container">
+			<div class="volume-bar hide">
+				<!--VOLUME-->
+				<input type="range" id="volume-input">
+			</div>
+			<div id="mute-toggle">
+				<img id="mutepic" src="youtube/assets/no-mute.png">
+			</div>
+		</div>
+		
+		<div id="about-txt" class="">
+			<h4>ABOUT</h4>
+			<br>
+			<p><span>~ W A V E ~</span>  is an ambient-focused web application made with YOUTUBE's player API where you get to play some of my favorite,
+				 summery korean pop jams, layered over an interactive background inspired in the (now dead) <br><span>v a p o r w a v e</span> aesthetic.</p>
+				 <p>For more info or bug alerts, feel free to e-mail me at <br><span id="email">mb.monteiroa@gmail.com</span></p>
+				 <p>Enjoy!</p>
+		</div>
+
+		<div id="aditional-info">
+			<div>
+				<img id="abt" src="youtube/assets/info.png">
+			</div>
+		</div>
+			
+			
+		</div>
+		<div class ="container">
+			<div class="face">
+				<!--song name display-->
+				<div class="song-name clip hide">
+					<h2 id="movtxt" class="mov-text"></h2>
+				</div>
+				<div class="block" id ="block17">
+					<!--face shadow-->
+					<img src="test/shadow_face.gif">
+				</div>
+				<div class="block" id ="block1">
+					<!--lip right-->
+					<img src="test/lip_right.png">
+				</div>
+				<div class="block" id ="block2">
+					<!--lip left-->
+					<img src="test/lip_left.png">
+				</div>
+				<div class="block" id ="block3">
+					<!--nose bridge-->
+					<img src="test/nose_bridge.png">
+				</div>
+				<div class="block" id ="block4">
+					<!--nostril-->
+					<img src="test/nostril.png">
+				</div>
+				<div class="block" id ="block5">
+					<!--face whole-->
+					<img src="test/face1.gif">
+				</div>
+				
+				<div class="block" id ="block6">
+					<!--face right-->
+					<img src="test/face2.png">
+				</div>
+				<div class="block glasses" id ="block7">
+					<!--glasses front-->
+					<img src="test/glasses1.png">
+					<svg width="0" height="0">
+							<filter id="blurMe">
+									<feGaussianBlur in="SourceGraphic" stdDeviation="5" />
+							</filter>
+    					<clipPath class="glasses" id="myClip">
+      						<ellipse cx="112" cy="48" rx="44.5" ry="54"/>
+      						<ellipse cx="272" cy="35" rx="52" ry="55"/>
+    					</clipPath>
+					</svg>
+					
+				</div>
+				<div class="block" id ="block8">
+					<!--glasses lens (lighted)-->
+					<img id="gl" src="test/glasses_lens.png">
+				</div>
+				<div class="block" id ="block9">
+					<!--hair left-->
+					<img src="test/hair1.gif">
+				</div>
+				<div class="block" id ="block10">
+					<!--hair right-->
+					<img src="test/hair2.gif">
+				</div>
+				<div class="block" id ="block11">
+					<!--hair main-->
+					<img src="test/hairmain.gif">
+				</div>
+				<div class="block" id ="block12">
+					<!--neck-->
+					<img src="test/neck.png">
+				</div>
+				<div class="block" id ="block13">
+					<!--torso-->
+					<img src="test/torso.png">
+				</div>
+				<div class="block" id ="block14">
+					<!--shoulder-->
+					<img src="test/shoulder.png">
+				</div>
+				<div class="block" id ="block15">
+					<!--glass-->
+					<img src="test/glass.png">
+				</div>
+				<div class="block" id ="block18">
+					<!--glass light-->
+					<img src="test/glass-light.png">
+				</div>
+				<div class="block" id ="block16">
+					<!--hand-->
+					<img src="test/hand.png">
+				</div>
+			</div>
+
+		</div> <!--/container-->
+	
+		<div class="container2">
+			<div class="background">
+			
+			<div class="backg" id="b1">
+				<img src="test/sky.png">
+			</div>
+			<div class="backg" id="b2">
+				<img id="sky" src="test/city2.png">
+			</div>
+			<div class="backg" id="b3">
+				<img src="test/city.png">
+			</div>
+			<div class="backg" id="b4">
+				<img src="test/front.png">
+			</div>
+			<div class="backg" id ="b5">
+			<!--palm tree left2-->
+				<img src="test/palm_left2.gif">
+			</div>
+			<div class="backg" id ="b6">
+				<!--palm tree right-->
+				<img src="test/palm_right.gif">
+			</div>
+			
+			<div class="backg" id ="b7">
+				<!--palm tree left-->
+				<img src="test/palm_left.gif">
+			</div>
+			<div class="backg" id ="b8">
+				<!--palm tree right 2-->
+				<img src="test/palm_right2.gif">
+			</div>
+
+			</div>
+		</div>
+		<script src="js/script.js"></script>
+		<script src="youtube/script.js"></script>
+		<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+		<script src="https://www.youtube.com/iframe_api"></script>
+	</body>
+	
+</html>
