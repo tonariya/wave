@@ -205,10 +205,8 @@ input[type=range]::-moz-range-track {
 	width: 100%;
 	height: 5.4px;
 	cursor: pointer;
-	box-shadow: 1.7px 1.7px 2.1px rgba(0, 0, 0, 0.09), 0px 0px 1.7px rgba(13, 13, 13, 0.09);
-	background: rgba(69, 77, 85, 0.86);
+	background-color: rgba(69, 77, 85, 0.86);
 	border-radius: 0px;
-	border: 0px solid rgba(0, 0, 0, 0);
 }
 input[type=range]::-moz-range-thumb {
 	border: 0px solid rgb(255, 79, 98);

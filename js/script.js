@@ -36,7 +36,10 @@ $("#abt").on("click", function(){
 var loadScreen = $("#loadScreen");
 
 $(document).ready( function(){
-	$(['city.png', 'city2.png', 'face1.gif', 'face2.png', 'glass.png', 'glasses_lens.png', 'glasses1.png']).preload();
+	$(['city.png', 'city2.png', 'face1.gif', 'face2.png', 'glass.png', 'glasses_lens.png', 
+	'glasses1.png', 'glass-light.png', 'hair1.gif', 'hair2.gif', 'hairmain.gif', 'hand.png', 
+	'lip_left.png', 'lip_right.png', 'neck.png', 'nose_bridge.png', 'nostril.png', 'palm_left.gif', 
+	'palm_left2.gif', 'palm_right.gif', 'palm_right2.gif', 'shadow_face.gif', 'sky.png', 'torso.png', 'shoulder.png']).preload();
 	imgResize();
 	loadScreen.hide();
 });
