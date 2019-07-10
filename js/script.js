@@ -36,10 +36,16 @@ $("#abt").on("click", function(){
 var loadScreen = $("#loadScreen");
 
 $(document).ready( function(){
+	$(['city.png', 'city2.png', 'face1.gif', 'face2.png', 'glass.png', 'glasses_lens.png', 'glasses1.png']).preload();
 	imgResize();
 	loadScreen.hide();
 });
 
+$.fn.preload = function(){
+	this.each(function(){
+		$('<img/>')[0].src = this;
+	});
+}
 
 function moveIt(){
 	x += (followx - x) * friction;
