@@ -33,13 +33,33 @@ $("#abt").on("click", function(){
 	tabopen = !tabopen;
 });
 
-var loadScreen = $("#loadScreen");
+(() => {
+	'use strict';
+	// Page is loaded
+	const objects = $('img.async');
+	Array.from(objects).map((item) => {
+	  // Start loading image
+	  const img = new Image();
+	  img.src = item.dataset.src;
+	  // Once image is loaded replace the src of the HTML element
+	  img.onload = () => {
+		item.classList.remove('async');
+		return item.nodeName === 'IMG' ? 
+		  item.src = item.dataset.src :        
+		  item.style.backgroundImage = `url(${item.dataset.src})`;
+	  };
+	});
+  })();
 
+var loadScreen = $("#loadScreen");
+var done = false;
 $(document).ready( function(){
+	while(!done){
 	$(['city.png', 'city2.png', 'face1.gif', 'face2.png', 'glass.png', 'glasses_lens.png', 
 	'glasses1.png', 'glass-light.png', 'hair1.gif', 'hair2.gif', 'hairmain.gif', 'hand.png', 
 	'lip_left.png', 'lip_right.png', 'neck.png', 'nose_bridge.png', 'nostril.png', 'palm_left.gif', 
 	'palm_left2.gif', 'palm_right.gif', 'palm_right2.gif', 'shadow_face.gif', 'sky.png', 'torso.png', 'shoulder.png']).preload();
+	}
 	imgResize();
 	loadScreen.hide();
 });
@@ -48,6 +68,7 @@ $.fn.preload = function(){
 	this.each(function(){
 		$('<img/>')[0].src = 'test/'+this;
 	});
+	done = true;
 }
 
 function moveIt(){
