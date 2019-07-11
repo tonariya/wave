@@ -46,7 +46,7 @@ $(document).ready( function(){
 
 $.fn.preload = function(){
 	this.each(function(){
-		$('<img/>')[0].src = this;
+		$('<img/>')[0].src = 'test/'+this;
 	});
 }
 
