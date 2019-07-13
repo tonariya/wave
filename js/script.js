@@ -1,4 +1,5 @@
 console.clear();
+
 //array with all of the blocks (divs with images)
 var img_pieces = $(".block img").toArray();
 var offsetX, offsetY, average, imgX, imgY, angX, angY;
@@ -54,13 +55,17 @@ $("#abt").on("click", function(){
 
 var loadScreen = $("#loadScreen");
 var done = false;
-$("img").ready( function(){
-	/*while(!done){
-	$(['city.png', 'city2.png', 'face1.gif', 'face2.png', 'glass.png', 'glasses_lens.png', 
-	'glasses1.png', 'glass-light.png', 'hair1.gif', 'hair2.gif', 'hairmain.gif', 'hand.png', 
-	'lip_left.png', 'lip_right.png', 'neck.png', 'nose_bridge.png', 'nostril.png', 'palm_left.gif', 
-	'palm_left2.gif', 'palm_right.gif', 'palm_right2.gif', 'shadow_face.gif', 'sky.png', 'torso.png', 'shoulder.png']).preload();
-	}*/
+$("document").ready( function(){
+	console.log(
+		"██╗  ██╗███████╗██╗   ██╗██╗"+"\n"+
+		"██║  ██║██╔════╝╚██╗ ██╔╝██║"+"\n"+
+		"███████║█████╗   ╚████╔╝ ██║"+"\n"+
+		"██╔══██║██╔══╝    ╚██╔╝  ╚═╝"+"\n"+
+		"██║  ██║███████╗   ██║   ██╗"+"\n"+
+		"╚═╝  ╚═╝╚══════╝   ╚═╝   ╚═╝");
+	console.log("You're not supposed to be here!");
+	console.log("but since you are, check out one of my favorite simpson moments:");
+	console.log("https://www.youtube.com/watch?v=Vr862G6MdGM");
 	imgResize();
 });
 

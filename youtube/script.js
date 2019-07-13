@@ -69,9 +69,9 @@ var trackInfo = ["Signal (f(x))",
 "Beautiful Boy (Wonder Girls)",
 "0mS1zPM9dhc",
 "Shadow (f(x))",
-"0mS1zPM9dhc",
+"HPQQvJUJf0Q",
 "Kok Kok (Apink)",
-"0mS1zPM9dhc",
+"5Y79hAmuq7c",
 "Jam Jam (IU)",
 "KWjDSRdIFgc",
 "Time To Love (Red Velvet)",
@@ -327,7 +327,7 @@ function onPlayerStateChange(event) {
 		shufb.attr("src", "youtube/assets/actv-shuffle.png");
 		shuffleTracks();
 		cueByIndex();
-		console.log("shuffling...");
+		//console.log("shuffling...");
 	}
 	//----- 0 = ENDED  ----- replay = true ---------//
 	else if (event.data == 0  && replay == 1){
@@ -361,7 +361,7 @@ function onPlayerStateChange(event) {
 	$(".track-list h4").css("opacity", "0.5");
 	$("#"+trackId[currentIndex]+" h4").css("opacity", "1");
 	
-	console.log(currentIndex);
+	//console.log(currentIndex);
 }
 // This function is called by initialize()
 function updateTimerDisplay(){
@@ -468,10 +468,8 @@ $('.replay').on('mouseup', function () {
     replay = !replay;
 	if(replay == 1){
 		repb.attr("src", "youtube/assets/actv-replay.png");
-		console.log("on");
 	} else{
 		repb.attr("src", "youtube/assets/replay.png");
-		console.log("off");
 	}
 });
 
