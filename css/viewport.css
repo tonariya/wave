@@ -93,7 +93,7 @@ div#viewport{
 		background-color: rgb(100,100,100, 0);
 		position: relative;
 		min-width: 250px;
-		width: 55vw;
+		width: 75vw;
 		margin: 0 auto;
 	}
 	div.track-list p{
@@ -126,9 +126,6 @@ div#viewport{
 }
 
 @media only screen and (min-width: 770px) and (max-width: 1280px) {
-	div.glasses svg, ellipse, clippath{
-		visibility: hidden;
-	}
 	.track-list{
 		min-width: 380px;
 		opacity: 1;
@@ -152,9 +149,6 @@ div#viewport{
 }
 
 @media only screen and (min-width : 1440px) {
-	div.glasses svg, ellipse, clippath{
-		visibility: hidden;
-	}
 	div.face{
 		bottom: -2vh;
 	}
@@ -169,9 +163,6 @@ div#viewport{
 
 /*NEEDS FIXING*/
 @media only screen and (min-width : 1824px) {
-	div.glasses svg, ellipse, clippath{
-		visibility: hidden;
-	}
 	.container>div, .container2>div{
 		transform: scale(1.4);
 	}
@@ -231,7 +222,7 @@ div#viewport{
 		min-height: 40vh;
 	}
 	div.track-list h4{
-		font-size: 28pt;
+		font-size: 18pt;
 	}
 	div.track-list p{
 		font-size: 18pt;

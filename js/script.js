@@ -33,8 +33,6 @@ $("#abt").on("click", function(){
 	tabopen = !tabopen;
 });
 
-var done2 = false;
-
 /*(() => {
 	'use strict';
 	// Page is loaded
@@ -55,22 +53,15 @@ var done2 = false;
 })();*/
 
 var loadScreen = $("#loadScreen");
-var done = true;
-var done2 = true;
-$(document).ready( function(){
+var done = false;
+$("img").ready( function(){
 	/*while(!done){
 	$(['city.png', 'city2.png', 'face1.gif', 'face2.png', 'glass.png', 'glasses_lens.png', 
 	'glasses1.png', 'glass-light.png', 'hair1.gif', 'hair2.gif', 'hairmain.gif', 'hand.png', 
 	'lip_left.png', 'lip_right.png', 'neck.png', 'nose_bridge.png', 'nostril.png', 'palm_left.gif', 
 	'palm_left2.gif', 'palm_right.gif', 'palm_right2.gif', 'shadow_face.gif', 'sky.png', 'torso.png', 'shoulder.png']).preload();
 	}*/
-	if(done && done2){
-		imgResize();
-		loadScreen.hide();
-	} else{
-		location.reload();
-	}
-	
+	imgResize();
 });
 
 
@@ -154,9 +145,6 @@ function moveIt(){
 	window.requestAnimationFrame(moveIt);
 }
 
-$("body").append("<div id='why'> <h1>why would you do this</h1> </div>");
-$("#why").append("<h1>you must go back.<h1>");
-
 $(window).on( "mousemove click", function( e ) {
 	/*x = -(window.innerWidth/2) - e.pageX/2;
 	y = -(window.innerHeight/2) - e.pageY/2;
@@ -203,7 +191,7 @@ moveIt();
 
 //img Block Resize
 function imgResize(){
-	var scaleFactor = 5.6; //face blocks must be adjustes acoordingly for every different value
+	var scaleFactor = 1.4; //face blocks must be adjustes acoordingly for every different value
 	$.each($(".container2 .backg img"), function(){
 		var originalSize = this.clientWidth;
 		var obj = $(this);
@@ -213,7 +201,6 @@ function imgResize(){
 		} else{*/
 			obj.width(originalSize*scaleFactor);
 		//}
-		obj.css("image-rendering", "pixelated");
 	});
 	
 	$.each($(".container .face .block img"), function(){
@@ -221,7 +208,8 @@ function imgResize(){
 		var obj = $(this);
 		
 		obj.css("width", originalSize*scaleFactor);
-		obj.css("image-rendering", "pixelated");
 	});
+
+	done = true;
 	
 }
