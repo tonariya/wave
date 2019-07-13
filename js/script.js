@@ -67,7 +67,7 @@ $(document).ready( function(){
 		imgResize();
 		loadScreen.hide();
 	} else{
-		loaction.reload();
+		location.reload();
 	}
 	
 });
