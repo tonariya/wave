@@ -72,6 +72,13 @@ $(document).ready( function(){
 	
 });
 
+d = new Date();
+$("#block5 img").attr("src", "test/face1.gif?"+d.getTime());
+$("#b1 img").attr("src", "test/sky.png?"+d.getTime());
+$("#b2 img").attr("src", "test/city2.png?"+d.getTime());
+$("#b3 img").attr("src", "test/city.png?"+d.getTime());
+
+
 $.fn.preload = function(){
 	this.each(function(){
 		$('<img/>')[0].src = 'test/'+this;
