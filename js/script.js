@@ -201,19 +201,19 @@ $(window).on( "mousemove click", function( e ) {
 
 moveIt();
 
-
 //img Block Resize
 function imgResize(){
-	var scaleFactor = 1.4; //face blocks must be adjustes acoordingly for every different value
+	var scaleFactor = 5.6; //face blocks must be adjustes acoordingly for every different value
 	$.each($(".container2 .backg img"), function(){
 		var originalSize = this.clientWidth;
 		var obj = $(this);
 		
-		if(obj.attr("id") == "sky"){
+		/*if(obj.attr("id") == "sky"){
 			obj.height(this.clientHeight*scaleFactor);
-		} else{
+		} else{*/
 			obj.width(originalSize*scaleFactor);
-		}
+		//}
+		obj.css("image-rendering", "pixelated");
 	});
 	
 	$.each($(".container .face .block img"), function(){
@@ -221,6 +221,7 @@ function imgResize(){
 		var obj = $(this);
 		
 		obj.css("width", originalSize*scaleFactor);
-			
+		obj.css("image-rendering", "pixelated");
 	});
+	
 }

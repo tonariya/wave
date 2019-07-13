@@ -135,17 +135,18 @@ div.face{ /*it's actually the whole visible body*/
 	min-height: 100%;
 	bottom: 0;
 }
+.block img, .backg img{
+	image-rendering: pixelated;
+}
 .backg img{
 	position: absolute;
 	bottom: 0;
 }
 #b1 img{
 	position: absolute;
-	left: -18vw;
-	top: -1vh;
-	width: auto;
-	height: 100%;
-	min-height: 100%;
+	left: -32vw;
+	top: -38vh;
+	height: auto;
 	display: block;
 }
 #b2{
