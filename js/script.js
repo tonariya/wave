@@ -35,7 +35,7 @@ $("#abt").on("click", function(){
 
 var done2 = false;
 
-(() => {
+/*(() => {
 	'use strict';
 	// Page is loaded
 	const objects = $('img.async');
@@ -52,17 +52,18 @@ var done2 = false;
 	  };
 	});
 	done2 = true;
-})();
+})();*/
 
 var loadScreen = $("#loadScreen");
-var done = false;
+var done = true;
+var done2 = true;
 $(document).ready( function(){
-	while(!done){
+	/*while(!done){
 	$(['city.png', 'city2.png', 'face1.gif', 'face2.png', 'glass.png', 'glasses_lens.png', 
 	'glasses1.png', 'glass-light.png', 'hair1.gif', 'hair2.gif', 'hairmain.gif', 'hand.png', 
 	'lip_left.png', 'lip_right.png', 'neck.png', 'nose_bridge.png', 'nostril.png', 'palm_left.gif', 
 	'palm_left2.gif', 'palm_right.gif', 'palm_right2.gif', 'shadow_face.gif', 'sky.png', 'torso.png', 'shoulder.png']).preload();
-	}
+	}*/
 	if(done && done2){
 		imgResize();
 		loadScreen.hide();
@@ -71,12 +72,6 @@ $(document).ready( function(){
 	}
 	
 });
-
-d = new Date();
-$("#block5 img").attr("src", "test/face1.gif?"+d.getTime());
-$("#b1 img").attr("src", "test/sky.png?"+d.getTime());
-$("#b2 img").attr("src", "test/city2.png?"+d.getTime());
-$("#b3 img").attr("src", "test/city.png?"+d.getTime());
 
 
 $.fn.preload = function(){
