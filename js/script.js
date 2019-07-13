@@ -33,6 +33,8 @@ $("#abt").on("click", function(){
 	tabopen = !tabopen;
 });
 
+var done2 = false;
+
 (() => {
 	'use strict';
 	// Page is loaded
@@ -49,7 +51,8 @@ $("#abt").on("click", function(){
 		  item.style.backgroundImage = `url(${item.dataset.src})`;
 	  };
 	});
-  })();
+	done2 = true;
+})();
 
 var loadScreen = $("#loadScreen");
 var done = false;
@@ -60,8 +63,13 @@ $(document).ready( function(){
 	'lip_left.png', 'lip_right.png', 'neck.png', 'nose_bridge.png', 'nostril.png', 'palm_left.gif', 
 	'palm_left2.gif', 'palm_right.gif', 'palm_right2.gif', 'shadow_face.gif', 'sky.png', 'torso.png', 'shoulder.png']).preload();
 	}
-	imgResize();
-	loadScreen.hide();
+	if(done && done2){
+		imgResize();
+		loadScreen.hide();
+	} else{
+		loaction.reload();
+	}
+	
 });
 
 $.fn.preload = function(){

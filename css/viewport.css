@@ -27,6 +27,25 @@ div#viewport{
 	margin-top: 0;
 	color: white;
 }
+@media screen and (max-width: 500px) {
+	#loadScreen img{
+		position: relative;
+		max-width: 80%;
+		margin: 0 auto;
+		min-width: 300px;
+	}
+	#loadScreen div.waveload{
+		top: 30%;
+	}
+	img#wave1{
+		right: 12px;
+		top: 8px;
+	}
+	div#message h4{
+		font-size: 11pt;
+		font-weight: 400;
+	}
+}
 @media screen and (max-width: 768px) {
 	div#playZone{
 		background-color: rgb(50,50,50, 0.45);
@@ -107,6 +126,9 @@ div#viewport{
 }
 
 @media only screen and (min-width: 770px) and (max-width: 1280px) {
+	div.glasses svg, ellipse, clippath{
+		visibility: hidden;
+	}
 	.track-list{
 		min-width: 380px;
 		opacity: 1;
@@ -130,6 +152,9 @@ div#viewport{
 }
 
 @media only screen and (min-width : 1440px) {
+	div.glasses svg, ellipse, clippath{
+		visibility: hidden;
+	}
 	div.face{
 		bottom: -2vh;
 	}
@@ -144,18 +169,27 @@ div#viewport{
 
 /*NEEDS FIXING*/
 @media only screen and (min-width : 1824px) {
+	div.glasses svg, ellipse, clippath{
+		visibility: hidden;
+	}
 	.container>div, .container2>div{
-		transform: scale(1.2);
+		transform: scale(1.4);
 	}
 	div.container2{
 		top: 0;
 		position: absolute;
 	}
 	div.face{
-		top: 50vh;
-		left: 60vw;
+		bottom: -58vh;
+		left: 70vw;
 	}
-
+	#loadScreen div.waveload{
+		top: 38%;
+	}
+	div#message h4{
+		font-size: 14pt;
+		font-weight: 400;
+	}
 	/*city2*/
 	#b2{
 		bottom: 6vh;
@@ -164,31 +198,31 @@ div#viewport{
 
 	/*city*/
 	#b3{
-		bottom: 8vh;
-		left: 6vw;
+		bottom: 12vh;
+		left: 10vw;
 	}
 	/*left palm tree 2*/
 	#b5 img{
-		left: 6.5vw;
+		left: 14vw;
 		bottom: 12vh;
 		transform: rotate(14deg);
 	}
 
 	/*right palm tree*/
 	#b6 img{
-		right: 6vw;
-		top: 30vh;
+		right: 12vw;
+		top: 42vh;
 	}
 
 	/*right palm tree 2*/
 	#b8 img{
-		left: 50vw;
-		top: 6vh;
+		left: 60vw;
+		top: 12vh;
 	}
 
 	/*left palm tree*/
 	#b7 img{
-		left: 7vw;
+		left: 12vw;
 		bottom: 28vh;
 		transform: rotate(6deg);
 	}
