@@ -64,7 +64,7 @@ $("document").ready( function(){
 		"██║  ██║███████╗   ██║   ██╗"+"\n"+
 		"╚═╝  ╚═╝╚══════╝   ╚═╝   ╚═╝");
 	console.log("You're not supposed to be here!");
-	console.log("but since you are, check out one of my favorite simpson moments:");
+	console.log("but since you are, check out one of my favorite simpsons' moments:");
 	console.log("https://www.youtube.com/watch?v=Vr862G6MdGM");
 	imgResize();
 });

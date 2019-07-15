@@ -105,13 +105,12 @@ p{
 
 div.face{ /*it's actually the whole visible body*/
 	-webkit-user-select: none;
-	position: absolute;
 	margin: 0;
 	padding: 0;
 	width: 100%;
 	height: 100%;
-	display: inline-block;
-	position: relative;
+	display: block;
+	position: absolute;
 	left: 45vw;
 	bottom: 0;
 	z-index: -10;
@@ -267,13 +266,13 @@ div.face{ /*it's actually the whole visible body*/
 #block13{
 	/*torso*/
 	top: 624px;
-	left: 128px;
+	left: 106px;
 	z-index: -150;
 }
 #block14{
 	/*shoulder*/
 	top: 663px;
-	left: 326px;
+	left: 294px;
 }
 #block15{
 	/*glass*/
@@ -289,8 +288,8 @@ div.face{ /*it's actually the whole visible body*/
 	/*hand*/
 	max-width: 315px;
 	min-width: 315px;
-	top: 590px;
-	left: -222px;
+	top: 522px;
+	left: -290px;
 }
 /*--------------------------*/
 /*-----------INFO-----------*/
