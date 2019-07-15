@@ -27,7 +27,10 @@ div#viewport{
 	margin-top: 0;
 	color: white;
 }
-@media screen and (max-width: 500px) {
+
+/*----------------------*/
+/* smartphones && low-res tablets */
+@media screen and (max-width: 479px) {
 	#loadScreen img{
 		position: relative;
 		max-width: 80%;
@@ -46,6 +49,9 @@ div#viewport{
 		font-weight: 400;
 	}
 }
+
+/*----------------------*/
+/* medium tablets */
 @media screen and (max-width: 768px) {
 	div#playZone{
 		background-color: rgb(50,50,50, 0.45);
@@ -58,7 +64,6 @@ div#viewport{
 	div#viewport {
     	visibility: visible;
   	}
-	
 	div.container {
 	  visibility: hidden;
 	  display: none;
@@ -125,7 +130,82 @@ div#viewport{
 	}
 }
 
-@media only screen and (min-width: 770px) and (max-width: 1280px) {
+/*----------------------*/
+/* tablets && ipads (portrait) */
+@media (min-width : 760px) and (max-width: 1024px) and (min-height: 675px){
+	div.face{
+		bottom: 10%;
+		left: 50%;
+	}
+	#b1, #b1 img{
+		height: 100%;
+		width: auto;
+		top: 0;
+	}
+	/*left palm tree*/
+	#b7 img{
+		left: -6%;
+		bottom: 4%;
+	}
+	/*left palm tree 2*/
+	#b5 img{
+		left: -6%;
+		bottom: -18%;
+	}
+	/*right palm tree*/
+	#b6 img{
+		visibility: hidden;
+	}
+	/*right palm tree 2*/
+	#b8 img{
+		left: 36%;
+		top: -15%;
+	}
+}
+@media (min-width : 760px) and (max-width: 1024px) and (min-height: 899px){
+	div.face{
+		bottom: -19%;
+		left: 40%;
+	}
+	/*left palm tree*/
+	#b7 img{
+		left: -6%;
+		bottom: 40%;
+	}
+	/*left palm tree 2*/
+	#b5 img{
+		left: -4%;
+		bottom: 8%;
+	}
+	/*right palm tree*/
+	#b6 img{
+		visibility: visible;
+		top: 20%;
+	}
+	/*right palm tree 2*/
+	#b8 img{
+		left: 36%;
+		top: -2%;
+	}
+}
+@media (min-width : 760px) and (max-width: 1024px) and (min-height: 1349px){
+	div.face{
+		bottom: -42%;
+	}
+	#b1, #b1>img{
+		top: 0;
+		height: 100%;
+		width: auto;
+	}
+}
+
+/*----------------------*/
+/* desktops (landscape) */
+@media (min-width: 1280px) and (min-height: 674px) {
+	div.face {
+        /*transform: scale(0.8);*/
+		bottom: -4%;
+    }
 	.track-list{
 		min-width: 380px;
 		opacity: 1;
@@ -136,10 +216,18 @@ div#viewport{
 		font-size: 12pt;
 		line-height: 14pt;
 	}
-	.face {
-        /*transform: scale(0.8);*/
-		bottom: -60px;
-    }
+	/*left palm tree*/
+	#b7 img{
+		left: -2%;
+		bottom: 14%;
+		transform: rotate(6deg);
+	}
+	/*left palm tree 2*/
+	#b5 img{
+		left: -3%;
+		transform: rotate(16deg);
+		bottom: 0;
+	}
 	.volume-bar{
 		margin-top: 8%;
 	}
@@ -148,22 +236,45 @@ div#viewport{
 	}
 }
 
-@media only screen and (min-width : 1440px){
+@media only screen and (min-width : 1440px) and (min-height: 1349px){
 	div.face{
 		min-height: 100%;
-		bottom: -1%;
+		bottom: -43%;
 	}
-	.volume-bar{
-		margin-top: 8%;
+	#b1, #b1 img{
+		top: 0;
+		height: 100%;
+		width: auto;
 	}
-	#volume-input{
-		height: 60%;
+	/*right palm tree*/
+	#b6 img{
+		right: -6%;
+		top: 56%;
 	}
-}
-@media only screen and (min-width : 1440px) and (min-height: 1030px) and (max-height: 1080px)  {
-	div.face{
-		min-height: 100%;
-		bottom: -14%;
+	/*city2*/
+	#b2{
+		bottom: -4%;
+		left: 2%;
+	}
+	/*city*/
+	#b3{
+		bottom: -2%;
+		left: -2%;
+	}
+	/*left palm tree*/
+	#b7 img{
+		left: -2%;
+		bottom: 25%;
+		transform: rotate(6deg);
+	}
+	/*left palm tree 2*/
+	#b5 img{
+		left: -3%;
+		bottom: 0;
+		transform: rotate(14deg);
+	}
+	div.track-list{
+		top: 40%;
 	}
 	.volume-bar{
 		margin-top: 8%;

@@ -4,12 +4,6 @@
 	outline: none;
 	background: transparent;
 }
-/*.container div{
-	display: block;
-	position: relative;
-	width: 160px;
-	height: 160px;
-}*/
 body,html {
 	margin: 0 auto;
 	overflow-x: hidden;
