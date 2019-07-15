@@ -292,6 +292,11 @@ div#viewport{
 		top: 0;
 		position: absolute;
 	}
+	#b1, #b1 img{
+		top: 0;
+		height: auto;
+		width: 100%;
+	}
 	div.face{
 		bottom: -48vh;
 		left: 70vw;
