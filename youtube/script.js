@@ -1,4 +1,14 @@
 console.clear();
+console.log(
+	"██╗  ██╗███████╗██╗   ██╗██╗"+"\n"+
+	"██║  ██║██╔════╝╚██╗ ██╔╝██║"+"\n"+
+	"███████║█████╗   ╚████╔╝ ██║"+"\n"+
+	"██╔══██║██╔══╝    ╚██╔╝  ╚═╝"+"\n"+
+	"██║  ██║███████╗   ██║   ██╗"+"\n"+
+	"╚═╝  ╚═╝╚══════╝   ╚═╝   ╚═╝");
+console.log(
+	"You're not supposed to be here!\n But since you are, check out one of my favorite Simpsons moment of all time:\n https://www.youtube.com/watch?v=P0jw_AFEGoI");
+
 var player,
 	paused = false,
 	stopped = true;
@@ -25,7 +35,7 @@ var trackInfo = ["Signal (f(x))",
 "JUMP (SHINee)",
 "h2YRIdPz-x8",
 "Girl's Talk (LOONA)",
-"D2N3ho2UDEA",
+"FqR1bNjFyyw",
 "Shinin' (JONGHYUN)",
 "J41qe-TM1DY",
 "View (SHINee)",
@@ -36,8 +46,6 @@ var trackInfo = ["Signal (f(x))",
 "6qU6UhPfvbU",
 "Married To The Music (SHINee)",
 "bcu7yZBeSKw",
-"1 of 1 (SHINee)",
-"WJua7KEP_oE",
 "Um Oh Ah Yeh (MAMAMOO)",
 "2atCp8rcYFQ",
 "Sweet & Easy (Wonder Girls)",
@@ -47,11 +55,11 @@ var trackInfo = ["Signal (f(x))",
 "Zezé (IU)",
 "I6c_Gjvruz8",
 "Feel Good (SHINee)",
-"pGfRL4ckTV0",
+"7BgHzuEZc0M",
 "Self Camera (MAMAMOO)",
 "CzSaFaRIYB8",
 "Girl Front (LOONA)",
-"VEYo_buwcl0",
+"kqoZTnnjyPo",
 "Chocolate (SHINee)",
 "Io34UDtp-3k",
 "Sunny Side Up! (Red Velvet)",
@@ -67,7 +75,7 @@ var trackInfo = ["Signal (f(x))",
 "Baton Touch (MAMAMOO)",
 "Ouc0cqEipII",
 "Beautiful Boy (Wonder Girls)",
-"0mS1zPM9dhc",
+"arzbGNJCWOU",
 "Shadow (f(x))",
 "HPQQvJUJf0Q",
 "Kok Kok (Apink)",
@@ -83,37 +91,35 @@ var trackInfo = ["Signal (f(x))",
 "My Hometown (MAMAMOO)",
 "WJawlFRl3Mg",
 "Words Don't Come Easy (MAMAMOO)",
-"j6zNGc8uPxQ",
+"ckQLgENOChI",
 "Take It Slow (Red Velvet)",
 "XOgjMJzY104",
 "We Are Going To (Beenzino)",
-"b_X5ccxrJg0",
+"wzyS9TiUe3I",
 "And July (Heize Feat.DEAN)",
-"rCeM57e2BfU",
+"oWE4Vk9oIDY",
 "Automatic (Red Velvet)",
-"px2Q47O0_eE",
+"RVUv6Hw3WsE",
 "4 Walls (f(x))",
 "4j7Umwfx60Q",
 "All Night (f(x))",
-"z6UAEbsLEgQ",
+"wYiOuz04kkA",
 "Bad Boy (Red Velvet)",
-"1_0LRhtdUBo",
+"zy1xWmqqpKA",
 "TALK (Tiffany)",
-"YVxsGNpuVo8",
+"JdN-Oa-Rd0M",
 "A train to chuncheon (TAEYEON & Yoon Jong Shin)",
-"2zr0eOS_UKU",
+"HmxmLUHrWbY",
 "LADY (Yubin)",
 "2MiQonPvlVM",
 "Thank U Soooo Much (Yubin)",
 "eiCDZYdPmys",
-"All Night (Girls' Generation)",
-"f4w8IbQTJpY",
 "Lullaby (GOT7)",
 "9RUeTYiJCyA",
 "Look(A Starlight Night) (NU'EST)",
 "rKNL7eME7JY",
 "Black Pearl (SUNMI)",
-"4SJAatu0ij8",
+"Vbh3JPR5jaI",
 ];
 var trackName = [];
 // flags id of excluded song
@@ -125,16 +131,10 @@ var currentIndex = 0;
 
 var shuffle = 0;
 var replay = 0;
-var loadScreen = $("#loadScreen");
-$(document).ready( function(){
-	done2 = true;
-	if(done && done2){
-		loadScreen.hide();
-	}
-});
 
 //complete track name (displayed on the user interface - composed of trackN and trackName)
 var trackTitle = [];
+
 function onYouTubeIframeAPIReady() {
     player = new YT.Player('video-placeholder', {
         width: 600,
@@ -146,7 +146,7 @@ function onYouTubeIframeAPIReady() {
 			controls: 0
         },
         events: {
-            onReady: initialize,
+            onReady: onPlayerReady,
 			onStateChange: onPlayerStateChange
         }
     });
@@ -181,12 +181,6 @@ function initialize(){
 	//Store playlists' video ids in 'trackId[]'
 	var k=0;
 	for(var i = 0; i<trackInfo.length; i++){
-		/*trackN[i] = i+" - ";
-		trackId[i] = player.getPlaylist()[i];
-		
-		trackTitle[i] = trackN[i] + " " + trackName[i];
-		$(".track-list").append("<div id='"+trackId[i]+"' class= 'trackC' > <h4>"+ trackTitle[i] + "</h4></div>");
-		*/
 		trackN[k] = k+" - ";
 		//returns text lines in odd numbers
 		if(i%2 == 0){
@@ -202,25 +196,14 @@ function initialize(){
 	//set default volume to 50%
 	$("#volume-input").val(50);
 	player.setVolume(50);
+
 }
 
 // The API will call this function when the video player is ready.
 function onPlayerReady(event) {
 	//event.target.playVideo();
+	initialize();
 	cueByIndex();
-}
-// Imports tracklist file with name and ids (not being used)
-// See track list var declaration up top
-function getPlaylistFile(){
-	$.get('youtube/assets/playlist.txt',{},function(content){
-		let lines=content.split('\n');
-		for(var k=0; k<lines.length;k++){
-			trackInfo[k] = lines[k];
-			if(k==lines.length-1){
-				break;
-			}
-		}
-	});
 }
 
 // Find and play selected track 
@@ -229,12 +212,13 @@ $(".track-list").on('click', "div.trackC h4", function(){
 	var id = $(this).parent().attr('id');
 	var index = 0;
 	if(!obj.hasClass("exclude")){
-		player.cueVideoById(id);
+		player.loadVideoById(id, 0);
 		while(id != trackId[index]){
 			player.nextVideo;
 			index++;
 		}
 		currentIndex = index;
+		currentTrack = trackName[currentIndex];
 		player.playVideo();
 	}
 });
@@ -243,19 +227,9 @@ $(".track-list").on('click', "div.trackC h4", function(){
 function flagTrack(track){
 	if( track.hasClass("exclude") ){
 		track.removeClass("exclude");
-		
-		//clear previously flagged track id in array flagTrack[] NOT IN USE
-		/*for(var l=0; l<flagTrack.length; l++){
-			if(flagTrack[l]==track.parent().attr("id")){
-				flagTrack[l]=null;
-				break;
-			}
-		}*/
+
 	}else{
 		track.addClass(" exclude");
-		// index flagged song id
-		/*PflagTrack[flagIndex] = track.parent().attr("id");
-		flagIndex++;*/
 	}
 }
 
@@ -291,8 +265,13 @@ PLAYING: 1
 UNSTARTED: -1
 */
 function onPlayerStateChange(event) {
+	currentTrack = trackName[currentIndex];
+	$(".mov-text").html(currentTrack);
+	
 	if (event.data == (YT.PlayerState.PLAYING || event.data == YT.PlayerState.PAUSED || event.data == YT.PlayerState.STOPPED)){
-		$(".mov-text").html(updateTrackName());
+
+		nextb.attr('src', "youtube/assets/next.png");
+		prevb.attr('src', "youtube/assets/back.png");
 
 		if(event.data == YT.PlayerState.PLAYING){
 			player.stopped = false;
@@ -304,26 +283,19 @@ function onPlayerStateChange(event) {
 	}
 	else if (event.data == YT.PlayerState.BUFFERING){
 		loading = !loading;
-
 		$(".mov-text").html("loading...");
-		$(".mov-text").css("animation", "slideshow 12s linear infinite");
-		
-		//for moz & other browsers
-		$(".mov-text").css("-moz-animation", "slideshow 12s linear infinite");
-		$(".mov-text").css("-webkit-animation", "slideshow 12s linear infinite");
-		
 		loading = !loading;
 	}
 	//----------- 0 = ENDED  -------------------------------//
 	else if (event.data == 0 && shuffle == 0 && replay == 0){
 		while( flagCheck(trackId[currentIndex]) ){
-			//currentIndex++;
+			currentIndex++;
 		}
 		currentIndex++;
 		cueByIndex();
 	}
 	//----- 0 = ENDED  ----- shuffle = true   &&  replay = true ---------//
-	else if (event.data == 0 && shuffle == 1 && replay == 0){
+	else if (event.data == 0 && shuffle == 1 && replay == 1){
 		shufb.attr("src", "youtube/assets/actv-shuffle.png");
 		shuffleTracks();
 		cueByIndex();
@@ -342,14 +314,12 @@ function onPlayerStateChange(event) {
 	if(event.data === YT.PlayerState.PAUSED && !player.stopped){
 		updateProgressBar();
 		player.paused = true;
-
 		pauseb.attr("src", "youtube/assets/actv-pause.png");
 
 		stopb.attr("src", "youtube/assets/stop.png");
 		playb.attr("src", "youtube/assets/play.png");
 	}
 	else if(event.data === YT.PlayerState.PAUSED && player.stopped){
-
 		pauseb.attr("src", "youtube/assets/pause.png");
 		playb.attr("src", "youtube/assets/play.png");
 	}
@@ -357,11 +327,14 @@ function onPlayerStateChange(event) {
 	if(event.data != 2){
 		player.paused = false;
 	}
-	
+	if(event.data == -1 || event.data == 0){
+		$('#progress-bar').val(0);
+		$(".mov-text").html("BRR--Jambot set and ready!");
+	}
+
+	//console.log("this: "+event.data);
 	$(".track-list h4").css("opacity", "0.5");
 	$("#"+trackId[currentIndex]+" h4").css("opacity", "1");
-	
-	//console.log(currentIndex);
 }
 // This function is called by initialize()
 function updateTimerDisplay(){
@@ -372,7 +345,7 @@ function updateTimerDisplay(){
 
 function cueByIndex(){
 	indexCheck();
-	player.cueVideoById(trackId[currentIndex]);
+	player.loadVideoById(trackId[currentIndex].toString(), 0);
 	player.playVideo();
 }
 
@@ -402,14 +375,7 @@ function updateProgressBar(){
     $('#progress-bar').val((player.getCurrentTime() / player.getDuration()) * 100);
 }
 
-//UPDATE & Display Current Track Name
-function updateTrackName(){
-	currentTrack = player.getVideoData().title;
-	return currentTrack;
-}
-
 // Progress bar
-
 $('#progress-bar').on('mouseup touchend', function (e) {
 
     // Calculate the new time for the video.
@@ -418,6 +384,7 @@ $('#progress-bar').on('mouseup touchend', function (e) {
 
     // Skip video to new time.
     player.seekTo(newTime);
+	player.playVideo();
 
 });
 
@@ -428,7 +395,7 @@ $('#play').on('mouseup', function () {
 		currentIndex++;
 	}
 	if(player.paused){
-		var resume = player.getCurrentTime();
+		let resume = player.getCurrentTime();
 		player.seekTo(resume);
 		player.playVideo();
 	} else{
@@ -449,8 +416,8 @@ $('#stop').on('mouseup', function () {
 	pauseb.attr("src", "youtube/assets/pause.png");
 	player.paused = false;
 	player.stopped = true;
-    player.pauseVideo();
 	player.seekTo(0.0);
+	player.pauseVideo();
 });
 
 // Shuffle
@@ -472,11 +439,6 @@ $('.replay').on('mouseup', function () {
 		repb.attr("src", "youtube/assets/replay.png");
 	}
 });
-
-//Track hover (not working, being overriden by opacity 0.5 in state change)
-/*$(".track-list").on('hover', "div.trackC h4", function(){
-	$(this).css("opacity", "1");
-});*/
 
 //----------------------------------
 // Sound volume
@@ -543,15 +505,6 @@ $("#volume-input").bind("mousewheel", function(event) {
 	}
 });
 
-// Other options
-$('#speed').on('change', function () {
-    player.setPlaybackRate($(this).val());
-});
-
-$('#quality').on('change', function () {
-    player.setPlaybackQuality($(this).val());
-});
-
 
 // Playlist
 $('#next').on('mouseup', function () {
@@ -567,6 +520,7 @@ $('#next').on('mouseup', function () {
 			shuffleTracks();
 		}
 	}
+	nextb.attr('src', "youtube/assets/actv-next.png");
 	cueByIndex();
 });
 
@@ -583,6 +537,7 @@ $('#prev').on('mouseup', function () {
 			shuffleTracks();
 		}
 	}
+	prevb.attr('src', "youtube/assets/actv-back.png");
 	cueByIndex();
 });
 

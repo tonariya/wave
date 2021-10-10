@@ -1,220 +1,138 @@
-console.clear();
-
-//array with all of the blocks (divs with images)
-var img_pieces = $(".block img").toArray();
-var offsetX, offsetY, average, imgX, imgY, angX, angY;
-var followx = 0,
-	followy = 0,
-	x = 0,
-	y = 0,
-	friction = 1/50,
-	velx = 0.05,
-	vely = 0.00455;
-
-var lMouseX, lMouseY;
-
-//glasses light reflex div
-var gReflex = $("div.song-name");
-var lensReflex = $("div#block8");
-var glassReflex = $("div#block18");
-
-var tabopen = false;
-var infoWindow = $("div#about-txt");
-$("#abt").on("click", function(){
-	if( !tabopen ){
-		$("#abt").attr("src", "youtube/assets/close.png");
-	} else{
-		$("div#aditional-info img").attr("src", "youtube/assets/info.png");
+window.onload = function(){
+	//array with all of the blocks (divs with images)
+	const img_block = document.getElementsByClassName("block");
+	const img_pieces = [];
+	for(let i=0; i<img_block.length; i++){
+		img_pieces[i] = img_block[i].children;
 	}
-	infoWindow.toggle( "drop", {
-		direction: "up"
-	},200), function(){
-		this.toggleClass("window");
-	};
-	tabopen = !tabopen;
-});
 
-/*(() => {
-	'use strict';
-	// Page is loaded
-	const objects = $('img.async');
-	Array.from(objects).map((item) => {
-	  // Start loading image
-	  const img = new Image();
-	  img.src = item.dataset.src;
-	  // Once image is loaded replace the src of the HTML element
-	  img.onload = () => {
-		item.classList.remove('async');
-		return item.nodeName === 'IMG' ? 
-		  item.src = item.dataset.src :        
-		  item.style.backgroundImage = `url(${item.dataset.src})`;
-	  };
-	});
-	done2 = true;
-})();*/
+	var offsetX, offsetY, average, imgX, imgY, angX, angY;
+	var followx = 0,
+		followy = 0,
+		x = 0,
+		y = 0,
+		friction = 1/50,
+		velx = 0.05,
+		vely = 0.00455;
 
-var loadScreen = $("#loadScreen");
-var done = false;
-$("document").ready( function(){
-	console.log(
-		"██╗  ██╗███████╗██╗   ██╗██╗"+"\n"+
-		"██║  ██║██╔════╝╚██╗ ██╔╝██║"+"\n"+
-		"███████║█████╗   ╚████╔╝ ██║"+"\n"+
-		"██╔══██║██╔══╝    ╚██╔╝  ╚═╝"+"\n"+
-		"██║  ██║███████╗   ██║   ██╗"+"\n"+
-		"╚═╝  ╚═╝╚══════╝   ╚═╝   ╚═╝");
-	console.log("You're not supposed to be here!");
-	console.log("but since you are, check out one of my favorite Simpsons moment of all time:");
-	console.log("https://www.youtube.com/watch?v=EWUKab2haWM");
-	imgResize();
-});
+	var lMouseX, lMouseY;
 
+	const face_container = document.getElementsByClassName("face")[0];
+	resizeIt();
 
-$.fn.preload = function(){
-	this.each(function(){
-		$('<img/>')[0].src = 'test/'+this;
-	});
-	done = true;
-}
+	//sprite assets resize (scale up)
+	function resizeIt(){
+		let viewport = window.innerWidth;
+		let scaleFactor = 1.25;
 
-function moveIt(){
-	x += (followx - x) * friction;
-	y += (followy - y) * friction;
-	
-	for(var i = 1; i<img_pieces.length+1; i++){
-		//position of every div block i (containing image piece)
-		imgX = img_pieces[i-1].getBoundingClientRect().left;
-		imgY = img_pieces[i-1].getBoundingClientRect().top;
-		
-		
-		angX = offsetX * velx *imgX / (window.innerWidth/2) * Math.PI/2;
-		angY = offsetY * vely *imgY / (window.innerHeight/2) * Math.PI/2;
-		
-		//girl blocks
-		$("#block"+i).css({"-webkit-transform":"translate("+(-angX*0.28+x)+"px, "+(angY*0.3+(-y))+"px)"});
-		
-		//shade <circle>
-		$("#block7 ellipse").css({"-webkit-transform":"translate("+(-angX*0.4+x)+"px, "+(angY*0.3+(-y))+"px)"});
-		
-		//hand glass & glass light movement fix
-		$("#block15").css({"-webkit-transform":"translate("+(-angX*0.002+x)+"px, "+(angY*0.05+(-y))+"px)"});
-		$("#block18").css({"-webkit-transform":"translate("+(-angX*0.002+x)+"px, "+(angY*0.05+(-y))+"px)"});
-		
-		//glass movement fix
-		$("#block16").css({"-webkit-transform":"translate("+(-angX*0.0024+x)+"px, "+(angY*0.05+(-y))+"px)"});
-
-		//face (whole) movement fix
-		$("#block5").css({"-webkit-transform":"translate("+(-angX*0.48+x)+"px, "+(angY*0.2+(-y))+"px)"});
-
-		//ponytail movement fix
-		$("#block11").css({"-webkit-transform":"translate("+(-angX*0.48+x)+"px, "+(angY*0.05+(-y))+"px)"});
-
+		if(viewport >= 1924){
+			scaleFactor = 1.8;
+		} else if(viewport <=1280){
+			scaleFactor = 1;
+		}
+		document.getElementsByClassName("background")[0].style.transform = "scale("+scaleFactor+")";
+		face_container.style.transform = "scale("+scaleFactor+")";
 	}
-	
-	//girl container div
-	$(".container").css({"perspective":(imgX+imgY)+"px", "-webkit-transform": "rotateX("+angY*0.2+"deg) rotateY("+angX*0.05+"deg)"});
-	
-	//background element blocks
-	//back buildings
-	$("#b2").css({"-webkit-transform":"translate("+(-angX*0.08+x)+"px, "+(-angY*0.281+y)+"px)"});
-	
-	//buildings
-	$("#b3").css({"-webkit-transform":"translate("+(-angX*0.15+x)+"px, "+(-angY*0.852+y)+"px)"});
-	
-	//parasol and car (not in view)
-	//$("#b4").css({"-webkit-transform":"translate("+(angX*0.02-x)+"px, "+(-angY*0.02+y)+"px)"});
 
-	//sky
-	$("#b1").css({"-webkit-transform":"translate("+(-angX*0.023+x)+"px, "+(-angY*0.252+y)+"px)"});
+	//not doing a thing
+	function faceHeightAdjust(){
+		const face_height = document.getElementById("block5").clientHeight + document.getElementById("block12").clientHeight + document.getElementById("block13").clientHeight;
+		face_container.style.height = face_height + " !important";
+	}
 
-	//left palm tree
-	$("#b7").css({"-webkit-transform":"translate("+(-angX*0.425+x)+"px, "+(-angY*1.56+y)+"px)"});
+	//glasses light reflex div
+	const gReflex = document.getElementsByClassName("song-name");
+	const lensReflex = document.getElementById("block8");
+	const glassReflex = document.getElementById("block18");
 
-	//left palm tree2
-	$("#b5").css({"-webkit-transform":"translate("+(-angX*0.25+x)+"px, "+(-angY*1.22+y)+"px)"});
-	
-	//right palm tree
-	$("#b6").css({"-webkit-transform":"translate("+(-angX*0.3+x)+"px, "+(-angY*1.252+y)+"px)"});
-	
-	//right palm tree2
-	$("#b8").css({"-webkit-transform":"translate("+(-angX*0.8+x)+"px, "+(-angY*2.505+y)+"px)"});
+	//"about" field
+	let tabopen = false;
+	const infoWindow = document.getElementById("about-txt");
+	const about_button = document.getElementById("abt");
 
-
-	////----perspective transform on left and right palm tree
-	/*$("#b7").css({"perspective":(imgX+imgY)+"px", "-webkit-transform": "rotateX("+angY*0.2+"deg) rotateY("+0.02+"deg)"});
-	$("#b6").css({"perspective":(imgX+imgY)+"px", "-webkit-transform": "rotateX("+angY*0.2+"deg) rotateY("+0.02+"deg)"});
-	*/
-	//background container div
-	$(".container2").css({"perspective":(imgX+imgY)+"px", "-webkit-transform": "rotateX("+angY*0.02+"deg) rotateY("+angX*0.01+"deg)"});
-	
-	window.requestAnimationFrame(moveIt);
-}
-
-$(window).on( "mousemove click", function( e ) {
-	/*x = -(window.innerWidth/2) - e.pageX/2;
-	y = -(window.innerHeight/2) - e.pageY/2;
-	
-	//$block1 offset
-	x1 = x*0.05;
-	y1 = y*0.15;
-	
-	//$block2 offse
-	x2 = x*0.01;
-	y2 = y*0.05;*/
-	
-	//general offset / places point O(0,0) at the center of the screen
-	offsetX = parseInt(e.pageX - window.innerWidth/2);
-	offsetY = parseInt(e.pageY - window.innerHeight/2);
-		
-	lMouseX = Math.max(-100, Math.min(100, $(window).width() / 2 - e.clientX));
-  	lMouseY = Math.max(-100, Math.min(100, $(window).height() / 2 - e.clientY));
-	
-	followx = (20 * lMouseX) / 100;
-	followy = (10 * lMouseY) / 100;
-	
-	var reflex = 80 * ((offsetX/window.innerWidth)*(offsetY/window.innerHeight)/2 + 1.2);
-
-	gReflex.css("opacity", reflex + 0.8);
-	lensReflex.css("opacity", reflex + 0.8);
-	lensReflex.css("-webkit-filter", "brightness("+reflex+"%)");
-	glassReflex.css("-webkit-filter", "brightness("+reflex+"%)");
-	glassReflex.css("opacity", "brightness("+reflex/100+")");
-	//---------------------------------------------------------------------//
-	/* Deprecated junk - meant for initial testing (I like to hoard)	
-	$(".container2").css({"perspective":(imgX+imgY)+"px", "-webkit-transform": "rotateX("+angY+"deg) rotateY("+angX+"deg)"});
-		
-	console.log((angX+" , "+ angY));
-	var y = -e.pageY * 60 / window.innerHeight;
-	$("#block1").css({"-webkit-transform":"translate(" + x + "px," + y + "px)"});
-	$("#block2").css({"-webkit-transform":"translate(" + x + "px," + y + "px)"});
-	$("#block3").css({"-webkit-transform":"translate(" + x + "px," + y + "px)"});
-	$("#block1").css({"-webkit-transform":"translate("+x1+"px, "+y1+"px)"});
-	$("#block2").css({"-webkit-transform":"translate("+x2+"px, "+y2+"px)"});*///
-});
-
-moveIt();
-
-//img Block Resize
-function imgResize(){
-	var scaleFactor = 1.4; //face blocks must be adjustes acoordingly for every different value
-	$.each($(".container2 .backg img"), function(){
-		var originalSize = this.clientWidth;
-		var obj = $(this);
-		
-		/*if(obj.attr("id") == "sky"){
-			obj.height(this.clientHeight*scaleFactor);
-		} else{*/
-			obj.width(originalSize*scaleFactor);
-		//}
+	//toggle "about" text
+	about_button.addEventListener("click", function(){
+		if(!tabopen){
+			about_button.setAttribute("src","youtube/assets/close.png");
+		} else{
+			this.setAttribute("src", "youtube/assets/info.png");
+		}
+		infoWindow.classList.toggle("visible");
+		tabopen = !tabopen;
 	});
-	
-	$.each($(".container .face .block img"), function(){
-		var originalSize = this.clientWidth;
-		var obj = $(this);
+	function moveIt(){
+		x += (followx - x) * friction;
+		y += (followy - y) * friction;
 		
-		obj.css("width", originalSize*scaleFactor);
-	});
+		for(let j=0; j<img_pieces.length; j++){
+			//position of every div block (containing image piece)
+			imgX = img_pieces[j][0].getBoundingClientRect().x;
+			imgY = img_pieces[j][0].getBoundingClientRect().y;
+		
+		
+			angX = offsetX * velx *imgX / (window.innerWidth/2) * Math.PI/2;
+			angY = offsetY * vely *imgY / (window.innerHeight/2) * Math.PI/2;
+		
+			//all blocks
+			img_pieces[j][0].style.transform = "translate("+(-angX*0.28+x)+"px, "+(angY*0.3+(-y))+"px)";
+			
+			//glass movement fix (hand, glass, glass light)
+			document.getElementById("block16").children[0].style.transform = "translate("+(-angX*0.8+x)+"px, "+(angY*0.5+(-y))+"px)";
+			document.getElementById("block15").children[0].style.transform = "translate("+(-angX*0.83+x)+"px, "+(angY*0.55+(-y))+"px)";
+			document.getElementById("block18").children[0].style.transform = "translate("+(-angX*0.83+x)+"px, "+(angY*0.55+(-y))+"px)";
 
-	done = true;
+			//ponytail movement fix
+			document.getElementById("block11").children[0].style.transform = "translate("+(-angX*0.55+x)+"px, "+(angY*0.05+(-y))+"px)";
+		}
+
 	
+		//background element blocks
+		//back buildings
+		document.getElementById("b2").children[0].style.transform = "translate("+(angX*0.08+x)+"px, "+(-angY*0.0000054+y)+"px)";
+	
+		//buildings
+		document.getElementById("b3").children[0].style.transform = "translate("+(angX*0.15+x)+"px, "+(-angY*0.000005+y)+"px)";
+
+		//sky
+		//document.getElementById("b1").style.transform = "translate("+(-angX*0.023+x)+"px, "+(-angY*0.252+y)+"px)";
+
+		//left palm tree
+		document.getElementById("b7").children[0].style.transform = "translate("+(-angX*0.25+x)+"px, "+(-angY*1.25+y)+"px) rotate(10deg)";
+
+		//left palm tree2
+		document.getElementById("b5").children[0].style.transform = "translate("+(-angX*0.025+x)+"px, "+(-angY*1.2+y)+"px) rotate(10deg)";
+	
+		//right palm tree
+		document.getElementById("b6").children[0].style.transform = "translate("+(-angX*0.25+x)+"px, "+(-angY*1.25+y)+"px)";
+	
+		//top palm tree
+		document.getElementById("b8").children[0].style.transform = "translate("+(-angX*0.3+x)+"px, "+(-angY*.8+y)+"px)";
+
+		window.requestAnimationFrame(moveIt);
+	}
+	window.addEventListener("mousemove", function(e){
+		offsetX = parseInt(e.pageX - window.innerWidth/2);
+		offsetY = parseInt(e.pageY - window.innerHeight/2);
+	
+		lMouseX = Math.max(-100, Math.min(100, $(window).width() / 2 - e.clientX));
+		lMouseY = Math.max(-100, Math.min(100, $(window).height() / 2 - e.clientY));
+
+		followx = (20 * lMouseX) / 100;
+		followy = (10 * lMouseY) / 100;
+
+		let reflex = 80 * ((offsetX/window.innerWidth)*(offsetY/window.innerHeight)/2 + 1.2);
+
+		gReflex[0].style.opacity = reflex/120;
+		lensReflex.style.opacity = reflex/120;
+		lensReflex.style.filter = "brightness("+reflex+"%)";
+		glassReflex.style.filter = "brightness("+reflex+"%)";
+		glassReflex.style.opacity = "brightness("+reflex/100+")";
+	});
+	moveIt();
+
+	window.addEventListener('resize', function(event) {
+		resizeIt();
+	}, true);
+
+	document.getElementById("loadScreen").remove();
 }

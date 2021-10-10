@@ -5,9 +5,8 @@ div#viewport{
 	position: absolute;
 	top: 0;
 	left: 0;
-	height: 100%;
 	width: 100vw;
-	z-index: 500;
+	z-index: 600;
 }
 #viewport>div{
 	position: relative;
@@ -21,38 +20,16 @@ div#viewport{
 #viewport h6{
 	border-radius: 2px;
 	font-family: 'Roboto Condensed', sans-serif;
-	font-size: 11pt;
+	font-size: .9rem;
 	font-weight: 400;
-	padding: 10px;
+	padding: 2px;
 	margin-top: 0;
 	color: white;
 }
-
-/*----------------------*/
-/* smartphones && low-res tablets */
-@media screen and (max-width: 479px) {
-	#loadScreen img{
-		position: relative;
-		max-width: 80%;
-		margin: 0 auto;
-		min-width: 300px;
-	}
-	#loadScreen div.waveload{
-		top: 30%;
-	}
-	img#wave1{
-		right: 12px;
-		top: 8px;
-	}
-	div#message h4{
-		font-size: 11pt;
-		font-weight: 400;
-	}
-}
-
-/*----------------------*/
-/* medium tablets */
 @media screen and (max-width: 768px) {
+	#b5{
+		left: -5vw !important;
+	}
 	div#playZone{
 		background-color: rgb(50,50,50, 0.45);
 	}
@@ -64,14 +41,13 @@ div#viewport{
 	div#viewport {
     	visibility: visible;
   	}
-	div.container {
-	  visibility: hidden;
-	  display: none;
-  	}
 	.volume-bar, #volume-input, .volume-bar:hover, img#mutepic, div.song-name{
 		display: none;
 		visibility: hidden;
-		opacity: 0;
+		opacity: 0 !important;
+	}
+	div.background, div.backg, div.backg img, img{
+		z-index: 10 !important;
 	}
 	
 	div.track-list-container, div.track-list{
@@ -79,11 +55,7 @@ div#viewport{
 		margin: 0 auto;
 		display: inline-block;
 		max-height: 50vh;
-		opacity: 1;
-	}
-	div.track-list h4{
-		font-size: 12pt;
-		line-height: 14pt;
+		opacity: 1 !important;
 	}
 	div.track-list-container{
 		position: relative;
@@ -97,115 +69,54 @@ div#viewport{
 		display: inline-block;
 		background-color: rgb(100,100,100, 0);
 		position: relative;
-		min-width: 250px;
-		width: 75vw;
+		min-width: 200px;
+		width: 82vw;
 		margin: 0 auto;
 	}
 	div.track-list p{
 		color: rgb(220, 220, 220);
 	}
-	/*left palm tree 2*/
-	#b5 img{
-		left: 40vw;
-		bottom: -12vh;
-		transform: rotate(8deg);
-	}
 
 	/*right palm tree*/
-	#b6 img{
-		visibility: hidden;
-	}
-
-	/*right palm tree 2*/
-	#b8 img{
-		left: 2vw;
-		top: -12vh;
-	}
-
-	/*left palm tree*/
-	#b7 img{
-		left: -2vw;
-		bottom: -2vh;
-		transform: rotate(6deg);
+	#b6 img, .face{
+		visibility: hidden !important;
 	}
 }
 
-/*----------------------*/
-/* tablets && ipads (portrait) */
-@media (min-width : 760px) and (max-width: 1024px) and (min-height: 675px){
-	div.face{
-		bottom: 10%;
-		left: 50%;
-	}
-	#b1, #b1 img{
-		height: 100%;
-		width: auto;
-		top: 0;
-	}
-	/*left palm tree*/
-	#b7 img{
-		left: -6%;
-		bottom: 4%;
-	}
-	/*left palm tree 2*/
-	#b5 img{
-		left: -6%;
-		bottom: -18%;
-	}
-	/*right palm tree*/
-	#b6 img{
-		visibility: hidden;
-	}
-	/*right palm tree 2*/
-	#b8 img{
-		left: 36%;
-		top: -15%;
-	}
-}
-@media (min-width : 760px) and (max-width: 1024px) and (min-height: 899px){
-	div.face{
-		bottom: -19%;
-		left: 40%;
-	}
-	/*left palm tree*/
-	#b7 img{
-		left: -6%;
-		bottom: 40%;
-	}
-	/*left palm tree 2*/
-	#b5 img{
-		left: -4%;
-		bottom: 8%;
-	}
-	/*right palm tree*/
-	#b6 img{
-		visibility: visible;
-		top: 20%;
-	}
-	/*right palm tree 2*/
-	#b8 img{
-		left: 36%;
-		top: -2%;
-	}
-}
-@media (min-width : 760px) and (max-width: 1024px) and (min-height: 1349px){
-	div.face{
-		bottom: -42%;
-	}
-	#b1, #b1>img{
-		top: 0;
-		height: 100%;
-		width: auto;
-	}
-}
+@media only screen and (max-width: 1280px) {
+		/*city2*/
+		#b2{
+			bottom: -2.2%;
+			left: -10vw;
+		}
+		/*city*/
+		#b3{
+			bottom: -2%;
+			left: 16vw;
+		}
+		/*left palm tree 2*/
+		#b5{
+			left: -2vw;
+			bottom: -3.5%;
+			transform: rotate(14deg) !important;
+		}
+		/*right palm tree*/
+		#b6{
+			right: -3vw;
+			bottom: 20%;
+		}
+		/*left palm tree*/
+		#b7{
+			left: -2vw;
+			bottom: 17%;
+			transform: rotate(6deg);
+		}
+		/*right palm tree 2*/
+		#b8{
+			right: 5vw;
+			top: -3.5%;
+		}
 
-/*----------------------*/
-/* desktops (landscape) */
-@media (min-width: 1280px) and (min-height: 674px) {
-	div.face {
-        /*transform: scale(0.8);*/
-		bottom: -4%;
-    }
 	.track-list{
 		min-width: 380px;
 		opacity: 1;
@@ -216,18 +127,6 @@ div#viewport{
 		font-size: 12pt;
 		line-height: 14pt;
 	}
-	/*left palm tree*/
-	#b7 img{
-		left: -2%;
-		bottom: 14%;
-		transform: rotate(6deg);
-	}
-	/*left palm tree 2*/
-	#b5 img{
-		left: -3%;
-		transform: rotate(16deg);
-		bottom: 0;
-	}
 	.volume-bar{
 		margin-top: 8%;
 	}
@@ -236,46 +135,7 @@ div#viewport{
 	}
 }
 
-@media only screen and (min-width : 1440px) and (min-height: 1349px){
-	div.face{
-		min-height: 100%;
-		bottom: -43%;
-	}
-	#b1, #b1 img{
-		top: 0;
-		height: 100%;
-		width: auto;
-	}
-	/*right palm tree*/
-	#b6 img{
-		right: -6%;
-		top: 56%;
-	}
-	/*city2*/
-	#b2{
-		bottom: -4%;
-		left: 2%;
-	}
-	/*city*/
-	#b3{
-		bottom: -2%;
-		left: -2%;
-	}
-	/*left palm tree*/
-	#b7 img{
-		left: -2%;
-		bottom: 25%;
-		transform: rotate(6deg);
-	}
-	/*left palm tree 2*/
-	#b5 img{
-		left: -3%;
-		bottom: 0;
-		transform: rotate(14deg);
-	}
-	div.track-list{
-		top: 40%;
-	}
+@media only screen and (min-width : 1440px) {
 	.volume-bar{
 		margin-top: 8%;
 	}
@@ -284,72 +144,46 @@ div#viewport{
 	}
 }
 
-@media only screen and (min-width : 1824px) {
-	.container>div, .container2>div{
-		transform: scale(1.4);
-	}
-	div.container2{
-		top: 0;
-		position: absolute;
-	}
-	#b1, #b1 img{
-		top: 0;
-		height: auto;
-		width: 100%;
-	}
-	div.face{
-		bottom: -48vh;
-		left: 70vw;
-	}
-	#loadScreen div.waveload{
-		top: 38%;
-	}
-	div#message h4{
-		font-size: 14pt;
-		font-weight: 400;
-	}
+@media only screen and (min-width : 1924px) {
+
 	/*city2*/
 	#b2{
-		bottom: 6vh;
+		bottom: 20.5%;
 		left: 25vw;
 	}
-
 	/*city*/
 	#b3{
-		bottom: 12vh;
-		left: 10vw;
+		bottom: 21%;
+		left: 33vw;
 	}
 	/*left palm tree 2*/
-	#b5 img{
-		left: 14vw;
-		bottom: 12vh;
-		transform: rotate(14deg);
+	#b5{
+		left: 22vw;
+		bottom: 21%;
+		transform: rotate(14deg) !important;
 	}
-
 	/*right palm tree*/
-	#b6 img{
-		right: 12vw;
-		top: 42vh;
+	#b6{
+		right: 20vw;
+		bottom: 35%;
 	}
-
-	/*right palm tree 2*/
-	#b8 img{
-		left: 60vw;
-		top: 12vh;
-	}
-
 	/*left palm tree*/
-	#b7 img{
-		left: 12vw;
-		bottom: 28vh;
+	#b7{
+		left: 24vw;
+		bottom: 33%;
 		transform: rotate(6deg);
+	}
+	/*right palm tree 2*/
+	#b8{
+		right: 29vw;
+		top: 20%;
 	}
 
 	div.track-list{
 		min-height: 40vh;
 	}
 	div.track-list h4{
-		font-size: 18pt;
+		font-size: 28pt;
 	}
 	div.track-list p{
 		font-size: 18pt;
