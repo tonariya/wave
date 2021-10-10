@@ -1,15 +1,3 @@
-#{
-	outline: none;
-	margin: 0 auto;
-	outline: none;
-	background: transparent;
-}
-/*.container div{
-	display: block;
-	position: relative;
-	width: 160px;
-	height: 160px;
-}*/
 body,html {
 	margin: 0 auto;
 	overflow-x: hidden;
@@ -20,9 +8,60 @@ body,html {
 	transform-origin: center;
 	perspective: 1000px;
 	display: inline-block;
+	cursor: url("../cursor/arrow.png"), auto;
 }
-div#playZone div{
-	z-index: 2000;
+body{
+	top: 0;
+	background-image: url("../test/sky.png");
+	background-position-x: center;
+	background-size: cover;
+}
+div#loadScreen{
+	z-index: 9001;
+	position: absolute;
+	height: 100vh;
+	width: 100vw;
+	min-width: 100%;
+	min-height: 100%;
+	background-color: hotpink;
+	top:0;
+	left:0;
+}
+#loadScreen div.waveload{
+	min-width: 100%;
+	width: 100vw;
+	height: auto;
+	margin: 0 auto;
+	top: 35vh;
+	display: block;
+	position: absolute;
+	text-align: center;
+}
+div.waveload img{
+	width: 25%;
+	min-width: 245px;
+}
+img#waveloadgif{
+	position: relative;
+	right: 16px;
+	top: 8px;
+}
+#loadingmessage{
+	position: absolute;
+	font-size: 1rem;
+	bottom: 2vh;
+	left: 0;
+	width: 100vw;
+	height: auto;
+	margin: 0 auto;
+	text-align: center;
+}
+#loadingmessage h4{
+	position: relative;
+	display: block;
+}
+div#playZone{
+	z-index: 500;
 }
 ::selection{
 	background-color:rgba(255, 79, 98, 0.8);
@@ -33,35 +72,32 @@ p{
 	font-weight: 500;
 	font-size: 14pt;
 }
-
-.container, .container2{
-	display: inline-block;
+.face, .container2{
 	margin: 0;
 	padding: 0;
+	display: block;
+	position: fixed;
+}
+.container2{
 	perspective-origin: center;
 	transform-origin: center;
+	min-width: 100vw;
 	width: 100%;
+	min-height: 100vh;
 	height: 100%;
 	left: 0;
 	top: 0;
-}
-.container2{
-	position: absolute;
-	z-index: -1000;
-}
-
-div.face{ /*it's actually the whole visible body*/
-	-webkit-user-select: none;
-	position: absolute;
-	margin: 0;
-	padding: 0;
-	width: 100%;
-	height: 100%;
-	display: inline-block;
-	position: relative;
-	left: 45vw;
-	bottom: 0;
+	overflow: hidden;
 	z-index: -10;
+}
+/*it's actually the whole visible body*/
+div.face{
+	width: auto;
+	height: auto;
+	left: 45vw;
+	top: unset !important;
+	bottom: -3% !important;
+	z-index: 10;
 	perspective: 500px;
 }
 .background{
@@ -70,21 +106,23 @@ div.face{ /*it's actually the whole visible body*/
 	min-height: 100%;
 	left: 0;
 	top: 0;
-	position: relative;
+	z-index: 0;
 	perspective: 1000px;
 }
 .block, .backg{
+	-webkit-user-select: none;
+	user-select: none;
 	display: inline-block;
-	position: absolute;
-	min-width: 100%;
-	max-width: 100%;
-	height: 100%;
-	min-height: 100%;
-	bottom: 0;
+	position: fixed;
+	/*min-width: 100%;
+	max-width: 100%;*/
+	height: auto;
 }
-.backg img{
-	position: absolute;
-	bottom: 0;
+/*#b1{
+	top:0;
+	left:0;
+	width: 100%;
+	height: 100%;
 }
 #b1 img{
 	position: absolute;
@@ -94,158 +132,147 @@ div.face{ /*it's actually the whole visible body*/
 	height: 100%;
 	min-height: 100%;
 	display: block;
-}
+}*/
 #b2{
-	bottom: -10vh;
-	left: -8vw;
+	bottom: 5.5%;
+	left: 10vw;
 }
 
 #b3{
-	bottom: -5vh;
-	left: -8vw;
+	bottom: 6.5%;
+	left: 16vw;
 }
-#b4{
-	bottom: 0;
-	visibility: hidden;
-}
-#b5 img, #b6 img, #b7 img, #b8 img{
-	position: absolute;
-	bottom: 0;
-}
+
 /*left palm tree 2*/
-#b5 img{
-	left: -1.6vw;
-	bottom: -12vh;
-	transform: rotate(12deg);
+#b5{
+	left: 5.4vw;
+	bottom: 8%;
 }
 
 /*right palm tree*/
-#b6 img{
-	right: -4vw;
-	top: 6vh;
+#b6{
+	right: 5.5vw;
+	bottom: 20vh;
 }
 
 /*left palm tree*/
-#b7 img{
-	left: -2.8vw;
-	bottom: 54px;
-	transform: rotate(11deg);
+#b7{
+	left: 8vw;
+	bottom: 22%;
 }
 
 /*right palm tree 2*/
-#b8 img{
-	right: 8vw;
-	top: -4vh;
+#b8{
+	right: 18vw;
+	top: 5vh;
 }
 
 #block1{
 	/*lip right*/
-	top: 408px;
-	left: 194px;
+	bottom: 235px;
+	left: 204px;
 }
 #block2{
 	/*lip left*/
-	top: 408px;
-	left: 162px;
+	bottom: 239px;
+	left: 181px;
 }
 #block3{
 	/*nose bridge*/
-	top: 258px;
-	left: 151px;
+	bottom: 291px;
+	left: 179px;
 }
 #block4{
 	/*nostril*/
-	top: 332px;
-	left: 189px;
+	bottom: 294px;
+	left: 203px;
 }
 #block5{
 	/*face right/ all*/
 	z-index: -150;
-	left: 100px;
-	top: -30px;
+	left: 141px;
+	bottom: 115px;
 }
 #block17{
 	/*face shadow*/
 	z-index: -125;
-	left: 108px;
-	top: 70px;
+	left: 145px;
+	bottom: 235px;
 	opacity: 0.7;
 }
 #block6{
 	/*face left*/
 	z-index: -150;
-	left: 100px;
-	top: 171px;
+	left: 138px;
+	bottom: 179px;
 }
 #block7{
 	/*glasses*/
 	z-index: 20;
-	left: 56px;
-	top: 218px;
+	left: 101px;
+	bottom: 311px;
 }
 #block8{
 	/*glasses lens*/
 	z-index: 25;
-	left: 56px;
-	top: 218px;
+	left: 101px;
+	bottom: 315px;
 }
 #block9{
 	/*hair left*/
 	z-index: 10;
-	top: 43px;
-	left: 23px;
+	bottom: 131px;
+	left: 84px;
 }
 #block10{
 	/*hair right*/
 	z-index: -10;
-	left: 108px;
-	top: 4px;
+	left: 146px;
+	bottom: 151px;
 }
 #block11{
 	/*head back/ ponytail*/
-	top: 101px;
-	left: 532px;
+	bottom: 116px;
+	left: 445px;
 	z-index: 100;
 }
 #block12{
 	/*neck*/
-	top: 380px;
+	bottom: 44px;
 	left: 230px;
 	z-index: -200;
 }
 #block13{
 	/*torso*/
-	top: 624px;
-	left: 128px;
+	bottom: -67px;
+	left: 141px;
 	z-index: -150;
 }
 #block14{
 	/*shoulder*/
-	top: 663px;
-	left: 326px;
+	bottom: -75px;
+	left: 304px;
 }
 #block15{
 	/*glass*/
-	top: 560px;
-	left: -195px;
+	bottom: 28px;
+	left: -90px;
 }
 #block18{
 	/*glass light*/
-	top: 560px;
-	left: -195px;
+	bottom: 28px;
+	left: -90px;
 }
 #block16{
 	/*hand*/
-	max-width: 315px;
-	min-width: 315px;
-	top: 590px;
-	left: -222px;
+	/*max-width: 315px;
+	min-width: 315px;*/
+	bottom: -52px;
+	left: -165px;
 }
 /*--------------------------*/
 /*-----------INFO-----------*/
 div#aditional-info{
-	width: 8vw;
-	max-width: 200px;
 	height: auto;
 	max-height: 50px;
 	position: absolute;
@@ -253,17 +280,18 @@ div#aditional-info{
 	right: 3vw;
 	float: right;
 	text-align: right;
-	top: 5.8vh;
+	top: 6.8vh;
+	z-index: 5000;
 }
 div#about-txt{
 	-webkit-user-select: initial;
 	background-color: rgba(192, 161, 255, 0.95);
 	color: white;
-	display: inline-block;
-	top: 0;
+	display: block;
+	top: -100%;
 	right: 2vw;
 	min-width: 120px;
-	max-width: 220px;
+	max-width: 260px;
 	height: auto;
 	min-height: 80px;
 	position: absolute;
@@ -271,7 +299,13 @@ div#about-txt{
 	padding-right: 20px;
 	padding-bottom: 25px;
 	z-index: 5000;
-	display: none;
+	opacity: 0;
+	transition: opacity .8s, top .4s;
+}
+.visible{
+	top:0 !important;
+	opacity: 1 !important;
+	visibility: visible !important;
 }
 div#about-txt p{
 	display: inline;
@@ -281,8 +315,8 @@ div#about-txt p{
 img#abt{
 	margin-right: 16px;
 }
-div#about-txt span{
-	font-family: monospace;
+img#abt:hover{
+	cursor: url("../cursor/about.png"), auto;
 }
 div#about-txt h4{
 	display: block;
@@ -293,26 +327,37 @@ div#about-txt h4{
 	margin-top: 5.8vh;
 	position: relative;
 	z-index: 5000;
-	cursor: default;
 	font-size: 18pt;
 }
 span{
-	color:rgba(255, 79, 98, 0.8);
+	color:rgb(246, 76, 93);
 }
 span#email{
 	color: rgb(255, 79, 98);
 }
 div.song-name{
-	top: 32.2vh;
-	opacity: 0.6;
-	filter: blur(0.6px);
+	margin: 0 auto;
+	right: 0;
+	top: 1.8vh;
+	position: sticky;
+	display: block;
+	filter: blur(0.4px);
 	-webkit-filter: filter(blur(0.6px));
 	-moz-filter: filter(blur(0.6px));
 	-o-filter: filter(blur(0.6px));
 	-ms-filter: filter(blur(0.6px));
-	transform: rotate(1deg);
+	z-index: 1000;
+	overflow: hidden;
+	width: auto;
+	height: 6rem;
+	line-height: 68pt;
 }
-
+#movtxt{
+	width: 100%;
+	animation: slideshow 16s linear infinite;
+	-moz-animation: slideshow 16s linear infinite;
+	-webkit-animation: slideshow 16s linear infinite;
+}
 div#why{
 	text-align: center;
 	position: absolute;
@@ -328,11 +373,21 @@ div#why{
 }
 div.song-name h2{
 	font-family: unifont;
-	font-size: 64px;
-	opacity: 0.8;
+	font-size: 3rem;
 	-webkit-filter: brightness(2.80);
 	-webkit-filter: saturate(4);
-	-webkit-filter: drop-shadow(0 0 0.3rem rgb(252, 237, 196));
+	-webkit-filter: drop-shadow(0 0 0.2rem rgb(252, 237, 196));
+}
+
+@keyframes fadein {
+	from { 
+        opacity:0;
+		top: -40%;
+    }
+    to   { 
+        opacity:1;
+		top:0;
+    }
 }
 
 /*All fonts below are available at 

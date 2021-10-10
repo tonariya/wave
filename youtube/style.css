@@ -7,7 +7,7 @@ div, img{
 	background: transparent;
 }
 div#playZone{
-	-webkit-transition: opacity 1.4s; /* Safari */
+	-webkit-transition: opacity 1.4s;
   	transition: opacity 1.4s;
 	opacity: 0;
 }
@@ -22,11 +22,11 @@ div#playZone{
 	height: 100%;
 }
 h4{
-	-webkit-transition: opacity 0.2s;
-	transition: opacity 0.2s;
+	-webkit-transition: opacity 0.15s;
+	transition: opacity 0.15s;
 	font-family: 'Roboto Condensed', sans-serif;
 	/*color: rgb(160,200,60);*/
-	color: rgb(255, 79, 98);
+	color: rgb(246, 76, 93);
 	opacity: 0.75;
 }
 h2{
@@ -38,13 +38,15 @@ h2{
 	opacity: 0.95;
 }
 h4:hover{
-	opacity: 1;
+	opacity: 1 !important;
 	text-decoration: underline;
-	cursor: pointer;
+	cursor: url("../cursor/select.png"), auto;
 }
 .track-list{
-	font-size: 14pt;
+	/*font-size: 14pt;*/
+	font-size: 140% !important;
 	-webkit-transition: opacity 0.2s;
+	transition: opacity 0.2s;
 	display: inline-block;
 	direction: rtl;
 	overflow-y: scroll;
@@ -52,22 +54,26 @@ h4:hover{
 	top: 28vh;
 	left: 14vw;
 	width: 25vw;
-	height: 40vh;
+	height: 39vh;
 	max-height: 400px;
 	min-height: 290px;
 	padding-left: 20px;
 	/*background-color: azure;*/
-	background-color: rgb(100,100,100, 0.05);
+	background-color: rgb(100,100,100, 0);
 	border-radius: 1%;
-	line-height: 10pt;
+	line-height: 100%;
 	opacity: 0.4;
 }
 .track-list:hover{
 	opacity: 1;
 	background-color: rgb(50,50,50, 0.1);
 }
+.trackC{
+	margin-bottom: 6%;
+}
 .track-list h4{
 	direction: ltr;
+	margin: 1rem !important;
 	margin-left: 20px;
 	width: auto;
 }
@@ -79,7 +85,7 @@ h4:hover{
 	color: rgb(100, 100, 100);
 }
 div.flag p:hover {
-	cursor: pointer;
+	cursor: url("../cursor/select.png"), auto;
 	opacity: 0.8;
 }
 div.flag p{
@@ -114,7 +120,7 @@ div.flag p{
 	display: inline-block;
 	width: 100%;
 	text-align: center;
-	opacity: 0.8;
+	opacity: 0.55;
 	-webkit-transition: opacity 0.45s;
 }
 
@@ -128,19 +134,13 @@ div#volume-bar-container, div#aditional-info, div.window{
 .control-wrap:hover{
 	opacity: 1;
 }
-.control-wrap div img:active>{
-	opacity: 0.95;
-}
-.control-wrap div img:hover{
-	cursor: pointer;
-	opacity: 0.95;
+.control-wrap div img:hover, div#mute-toggle:hover{
+	cursor: url("../cursor/select.png"), auto;
 }
 .control-wrap img{
-	width: 25px;
 	height: auto;
 	margin: 2px;
 	padding: 2px;
-	opacity: 0.8;
 }
 
 /* PROGRESS BAR */
@@ -171,8 +171,8 @@ input[type=range] {
 	-webkit-appearance: none;
 	margin: 8.8px 0;
 	background: transparent;
-	background-color: rgba(96, 108, 119, 0.5);
-	color: transparent
+	background-color: rgb(69 72 66);
+	color: transparent;
 }
 input[type=range]:focus {
 	outline: none;
@@ -183,8 +183,8 @@ input[type=range]:focus {
 input[type=range]::-webkit-slider-runnable-track {
 	width: 100%;
 	height: 5.4px;
-	cursor: pointer;
-	background-color: rgba(96, 108, 119, 0.5);
+	cursor: url("../cursor/select.png"), auto;
+	background-color: rgba(96, 108, 119, 1);
 	color: transparent;
 	border-radius: 0px;
 }
@@ -194,19 +194,19 @@ input[type=range]::-webkit-slider-thumb {
 	width: 8px;
 	border-radius: 2px;
 	background: rgb(255, 79, 98);
-	cursor: pointer;
+	cursor: url("../cursor/select.png"), auto;
 	-webkit-appearance: none;
 	margin-top: -8.8px;
 }
 input[type=range]:focus::-webkit-slider-runnable-track {
-	background-color: rgba(96, 108, 119, 0.5);
+	background-color: rgba(96, 108, 119, 1);
 }
 input[type=range]::-moz-range-track {
 	width: 100%;
 	height: 5.4px;
-	cursor: pointer;
+	cursor: url("../cursor/select.png"), auto;
 	box-shadow: 1.7px 1.7px 2.1px rgba(0, 0, 0, 0.09), 0px 0px 1.7px rgba(13, 13, 13, 0.09);
-	background: rgba(69, 77, 85, 0.86);
+	background: rgba(69, 77, 85, 1);
 	border-radius: 0px;
 	border: 0px solid rgba(0, 0, 0, 0);
 }
@@ -216,24 +216,24 @@ input[type=range]::-moz-range-thumb {
 	width: 8px;
 	border-radius: 2px;
 	background: rgb(255, 79, 98);
-	cursor: pointer;
+	cursor: url("../cursor/select.png"), auto;
 }
 input[type=range]::-ms-track {
 	width: 100%;
 	height: 5.4px;
-	cursor: pointer;
+	cursor: url("../cursor/select.png"), auto;
 	background: transparent;
 	border-color: transparent;
 	color: transparent;
 }
 input[type=range]::-ms-fill-lower {
-	background: rgba(42, 46, 51, 0.86);
+	background: rgba(42, 46, 51, 1);
 	border: 0px solid rgba(0, 0, 0, 0);
 	border-radius: 0px;
 	box-shadow: 1.7px 1.7px 2.1px rgba(0, 0, 0, 0.09), 0px 0px 1.7px rgba(13, 13, 13, 0.09);
 }
 input[type=range]::-ms-fill-upper {
-	background: rgba(69, 77, 85, 0.5);
+	background: rgba(69, 77, 85, 1);
 	border: 0px solid rgba(0, 0, 0, 0);
 	border-radius: 0px;
 	box-shadow: 1.7px 1.7px 2.1px rgba(0, 0, 0, 0.09), 0px 0px 1.7px rgba(13, 13, 13, 0.09);
@@ -244,14 +244,14 @@ input[type=range]::-ms-thumb {
 	width: 8px;
 	border-radius: 2px;
 	background-color: rgb(255, 79, 98);
-	cursor: pointer;
+	cursor: url("../cursor/select.png"), auto;
 	height: 5.4px;
 }
 input[type=range]:focus::-ms-fill-lower {
-	background: rgba(69, 77, 85, 0.86);
+	background: rgba(69, 77, 85, 1);
 }
 input[type=range]:focus::-ms-fill-upper {
-	background: rgba(96, 108, 119, 0.86);
+	background: rgba(96, 108, 119, 1);
 }
 
 /* VOLUME */
@@ -267,7 +267,7 @@ div#volume-bar-container{
 	height: 90vh;
 	margin-right: 3px;
 	float: right;
-	opacity: 0.55;
+	opacity: 0.85;
 	-webkit-transition: opacity 0.4s;
     transition: opacity 0.4s;
 }
@@ -277,8 +277,8 @@ div#mute-toggle{
 	width: auto;
 	padding: 0;
 	margin: 0;
-	right: 3px;
-	bottom: 10vh;
+	right: 8px;
+	bottom: 12vh;
 	float: right;
 }
 div#volume-bar-container:hover{
@@ -307,24 +307,6 @@ div.volume-bar{
 .hide{
 	visibility: hidden;
 }
-.song-name{
-	white-space: nowrap;
-	filter: blur(0.8px);
-	z-index: 1000;
-	overflow: hidden;
-	position: absolute;
-	top: 200px;
-	width: 45vw;
-	line-height: 68pt;
-	min-width: 200px;
-	height: 12vh;
-	max-height: 100px;
-	min-height: 45px;
-	overflow-x: hidden;
-	display: inline-block;
-	opacity: 0.8;
-	/*background-color: aquamarine;*/
-}
 
 /*div w/ txt clipped to clipPath w/ circles*/
 .clip{
@@ -343,12 +325,12 @@ h2.mov-text{
 	position: absolute;
 	left: 0;
 	top: 0;
-	width: 400%;
+	width: auto;
 	margin: 10px;
 }
 @keyframes slideshow{
 	0%	{ left: 100%; }
-	100%{ left: -100%; }
+	100%{ left: -80%; }
 }
 
 @-moz-keyframes slideshow{
